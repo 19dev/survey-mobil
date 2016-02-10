@@ -1,12 +1,14 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $timeout) {
+.controller('AppCtrl', function($scope) {
 
-  $scope.loginData = {};
 
 })
 
 .controller('MainCtrl', function($scope) {
+
+})
+.controller('SurveyCtrl', function($scope) {
 
 })
 
