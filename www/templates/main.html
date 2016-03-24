@@ -8,13 +8,13 @@
 		    </label>
       </ion-item>
       <ion-item>
-      	<center><button class="button button-full button-assertive" ng-click="getSurvey()">
+      	<center><button class="button button-full button-calm" ng-click="getSurvey()">
 		  GİRİŞ
 		</button></center>
 	   </ion-item>
 
-     <ion-item>
-      {{testMesaj}}
+     <ion-item ng-show="loginMessage">
+      <center><b>{{loginMessage}}</b></center>
      </ion-item>
 
 

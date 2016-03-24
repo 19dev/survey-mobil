@@ -54,12 +54,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
       }
     })
 
-        .state('app.survey', {
+    .state('app.survey', {
       url: '/survey',
       views: {
         'menuContent': {
           templateUrl: 'templates/survey.html',
           controller: 'SurveyCtrl'
+        }
+      }
+    })
+
+    .state('app.survey_entrance', {
+      url: '/survey_entrance',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/survey_entrance.html',
+          controller: 'SurveyEntranceCtrl'
         }
       }
     })
