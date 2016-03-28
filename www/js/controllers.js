@@ -1,7 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope) {
-
+.controller('AppCtrl', function($scope, $sce) {
+    $scope.renderHtml = function(html_code)
+    {
+      return $sce.trustAsHtml(html_code);
+    };
 })
 
 
@@ -38,22 +41,18 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('SurveyCtrl', function($scope, $sce) {
+.controller('SurveyCtrl', function($scope) {
 
-	$scope.renderHtml = function(html_code)
-    {
-      return $sce.trustAsHtml(html_code);
-    };
+    $scope.isclicked=false;
+    $scope.change_color= function(){
 
-
+      return "button-positive"
+    }
 })
 
-.controller('SurveyEntranceCtrl', function($scope, $sce) {
+.controller('SurveyEntranceCtrl', function($scope) {
 
-	$scope.renderHtml = function(html_code)
-    {
-      return $sce.trustAsHtml(html_code);
-    };
+
 
 
 })

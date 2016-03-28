@@ -11,7 +11,12 @@
     <p>{{item.question_header}}</p>
     <div ng-repeat="x in item.answers">
       {{x.answer_description}}
-      <img class="full-image" src="{{x.image.url}}">
+      
+       <ion-checkbox ng-model="filter.pink">Pink
+       </ion-checkbox>
+       <button class="button button-light" ng-click="change_color()">
+          <img class="full-image" src="{{x.image.url}}">
+        </button>
     </div>
   </div>
 
