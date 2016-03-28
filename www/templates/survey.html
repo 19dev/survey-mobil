@@ -7,22 +7,18 @@
     <h2 ng-bind="survey[0].poll_name"></h2>
     <p>Anket Açıklaması</p>
   </div>
+  <div ng-repeat="item in survey[1]">
+    <p>{{item.question_header}}</p>
+    <div ng-repeat="x in item.answers">
+      {{x.answer_description}}
+      <img class="full-image" src="{{x.image.url}}">
+    </div>
+  </div>
 
   <div class="item item-image">
     <img src="cover.jpg">
   </div>
-  <li class="item item-icon-left balance" href="#">
-    <i class="icon ion-ios-calendar-outline"></i>
-    Başlangıç Tarihi:
-  </li>
-  <li class="item item-icon-left assertive" href="#">
-    <i class="icon ion-ios-calendar"></i>
-    Bitiş Tarihi:
-  </li>
-  <a class="item item-icon-left positive" href="#">
-    <i class="icon ion-ios-play"></i>
-    Başla
-  </a>
+
   
 
 </div>
