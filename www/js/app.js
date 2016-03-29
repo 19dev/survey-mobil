@@ -34,7 +34,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-
   $stateProvider
 
     .state('app', {

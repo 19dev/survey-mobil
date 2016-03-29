@@ -35,6 +35,10 @@ angular.module('starter.controllers', [])
   			
   		});
 
+    if ($scope.$root.survey  === undefined) {
+          $scope.$root.loginMessage = "Bağlantı hatası !";
+        }
+
 
 
 	}

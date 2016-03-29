@@ -7,6 +7,7 @@
         <h2 ng-bind="survey[0].poll_name"></h2>
         <p>Anket Açıklaması</p>
       </div>
+
       <div ng-repeat="item in survey[1]">
         <p>{{item.question_header}}</p>
         <div ng-repeat="x in item.answers">
@@ -17,7 +18,8 @@
             </div>
 
             <div class="item item-body">
-                    <img class="full-image" src="{{x.image.url}}">
+              <img class="full-image" src="{{x.image.url}}">
+
               <p>
                {{x.answer_description}}
               </p>
