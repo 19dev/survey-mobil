@@ -2,27 +2,33 @@
   <ion-content>
     <div class="list card">
 
-  <div class="item item-avatar">
-    <img src="avatar.jpg">
-    <h2 ng-bind="survey[0].poll_name"></h2>
-    <p>Anket Açıklaması</p>
-  </div>
-  <div ng-repeat="item in survey[1]">
-    <p>{{item.question_header}}</p>
-    <div ng-repeat="x in item.answers">
-      {{x.answer_description}}
-      
-       <ion-checkbox ng-model="filter.pink">Pink
-       </ion-checkbox>
-       <button class="button button-light" ng-click="change_color()">
-          <img class="full-image" src="{{x.image.url}}">
-        </button>
-    </div>
-  </div>
+      <div class="item item-divider">
 
-  <div class="item item-image">
-    <img src="cover.jpg">
-  </div>
+        <h2 ng-bind="survey[0].poll_name"></h2>
+        <p>Anket Açıklaması</p>
+      </div>
+      <div ng-repeat="item in survey[1]">
+        <p>{{item.question_header}}</p>
+        <div ng-repeat="x in item.answers">
+         <div class="list card">
+
+            <div class="item item-avatar">
+              <p>Cevap</p>
+            </div>
+
+            <div class="item item-body">
+                    <img class="full-image" src="{{x.image.url}}">
+              <p>
+               {{x.answer_description}}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+       
+      </div>
 
   
 
