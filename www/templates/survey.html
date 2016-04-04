@@ -1,40 +1,35 @@
 <ion-view view-title="Testin Uygulandığı Sayfa">
   <ion-content>
-    <div class="list card">
 
-      <div class="item item-divider">
+  <div ng-repeat="item in survey[1]">
+    <p>{{item.question_header}}</p>
+    <div ng-repeat="x in item.answers">
 
-        <h2 ng-bind="survey[0].poll_name"></h2>
-        <p>Anket Açıklaması</p>
+     <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
+
+      <div class="item item-avatar" ng-class="cardClass({{x.id}})">
+        <p>Cevap</p>
       </div>
 
-      <div ng-repeat="item in survey[1]">
-        <p>{{item.question_header}}</p>
-        <div ng-repeat="x in item.answers">
-         
-         <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
+      <div class="item item-body" ng-class="cardClass({{x.id}})">
+        <img class="full-image" src="{{x.image.url}}">
 
-            <div class="item item-avatar" ng-class="cardClass({{x.id}})">
-              <p>Cevap</p>
-            </div>
+        <p ng-class="cardClass({{x.id}})">
+         {{x.answer_description}}
+       </p>
 
-            <div class="item item-body" ng-class="cardClass({{x.id}})">
-              <img class="full-image" src="{{x.image.url}}">
+     </div>
 
-              <p ng-class="cardClass({{x.id}})">
-               {{x.answer_description}}
-              </p>
+   </div>
 
-            </div>
+  </div>
 
-          </div>
+  </div>
 
-        </div>
-       
-      </div>
+  <center>
+    <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
+  </center>
 
-  
 
-</div>
   </ion-content>
 </ion-view>

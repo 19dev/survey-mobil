@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('MainCtrl', function($scope, Survey, $state) {
+.controller('MainCtrl', function($scope, Survey, $state, $localstorage) {
 
 	$scope.$root.pass_code = "";
 
@@ -21,45 +21,60 @@ angular.module('starter.controllers', [])
     $scope.idsReset();
 
 
+    $localstorage.set("pass_code", $scope.$root.pass_code); 
+
+
 		var data = Survey.getData($scope.$root.pass_code, function(data){
   			$scope.$root.survey = data;
   			if ($scope.$root.survey.state === "1") {
-  				$scope.$root.loginMessage = "Hatalı giriş kodu kullandınız !";
+  				$scope.loginMessage = "Hatalı giriş kodu kullandınız !";
   			}
   			else if ($scope.$root.survey.state === "2") {
-  				$scope.$root.loginMessage = "Bu giriş kodu daha önce kullanılmış !";
+  				$scope.loginMessage = "Bu giriş kodu daha önce kullanılmış !";
   			}
   			else if ($scope.$root.survey.state === "3") {
-  				$scope.$root.loginMessage = "Bu test daha başlamadı !";
+  				$scope.loginMessage = "Bu test daha başlamadı !";
   			}
   			else if ($scope.$root.survey.state === "4") {
-  				$scope.$root.loginMessage = "Bu testin süresi geçmiş !";
+  				$scope.loginMessage = "Bu testin süresi geçmiş !";
   			}
   			else {
   				$state.go("app.survey_entrance");
+          $scope.loginMessage = "";
   			}
   			
-  		});
-
-    if ($scope.$root.survey  === undefined) {
+  		}, function(data2){
+        if ($scope.$root.survey  === undefined) {
           $scope.$root.loginMessage = "Bağlantı hatası !";
         }
 
-
+      });
 
 	}
 	
 })
 
-.controller('SurveyCtrl', function($scope, $localstorage) {
+.controller('SurveyCtrl', function($scope, $localstorage, Survey, $state) {
+
+    $scope.postSurvey = function(){
+
+      var data = Survey.postData($scope.ids_array, $localstorage.get('pass_code'), function(data){
+        $scope.$root.result = data.state;
+      });
+      $scope.$root.pass_code = "";
+      
+      $state.go('app.main');
+
+
+    }
 
 
     $scope.ids_synchro = function() {
       $scope.idler = $localstorage.getObject('idler') || {};
-      $scope.idler_array = [];
+      $scope.ids_array = [];
       angular.forEach($scope.idler, function(value, key) {
         this.push(parseInt(key));
-      }, $scope.idler_array);
+      }, $scope.ids_array);
     };
 
     $scope.ids_synchro();
@@ -74,10 +89,10 @@ angular.module('starter.controllers', [])
         delete $scope.idler[id];
         $localstorage.setObject("idler", $scope.idler);
       }
-      $scope.idler_array = [];
+      $scope.ids_array = [];
       angular.forEach($scope.idler, function(value, key) {
         this.push(parseInt(key));
-      }, $scope.idler_array);
+      }, $scope.ids_array);
     };
 
 

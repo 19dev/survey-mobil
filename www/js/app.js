@@ -17,11 +17,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
 
 .factory("Survey", function($http) {
     var surveyUrl = "http://localhost:3000/surveyMobile?passcod=";
+    var recordUrl = "http://localhost:3000/recordMobile";
 
     return {
-      getData: function(code, success) {
+      getData: function(code, success, error) {
           $http({
                 url: surveyUrl + code,
+                method: "GET"
+            }).success(function(data) {
+                    success(data);
+              })
+              .error(function(data) {
+                    error(data);
+              });
+      },
+
+      postData: function(ids, code, success) {
+          $http({
+                url: recordUrl + "?idler=" + ids + "&passcod=" + code,
                 method: "GET"
             }).success(function(data) {
                     success(data);
