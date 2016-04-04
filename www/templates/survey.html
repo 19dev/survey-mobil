@@ -1,7 +1,7 @@
 <ion-view view-title="Testin Uygulandığı Sayfa">
   <ion-content>
 
-  <div ng-repeat="item in survey[1]">
+  <div ng-repeat="item in survey[1]" ng-show="$index == currentPage">
     <p>{{item.question_header}}</p>
     <div ng-repeat="x in item.answers">
 
@@ -25,7 +25,16 @@
   </div>
 
   </div>
+        <center>
+          <button id="prev_button" class="button button-assertive" ng-click="loadPrevPage()" ng-disabled="currentPage===0">
+            Geri
+          </button>
+          {{question_size}}
+          <button id="next_button" class="button button-assertive" ng-click="loadNextPage()" ng-disabled="!(currentPage<question_size)">
+            İleri
+          </button>
 
+        </center>
   <center>
     <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
   </center>

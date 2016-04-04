@@ -105,8 +105,16 @@ angular.module('starter.controllers', [])
       }
     };
 
-
+    $scope.currentPage = 0;
     
+    $scope.question_size = $scope.$root.survey[1].length-1;
+    $scope.loadNextPage = function() {
+      $scope.currentPage++;
+    }
+    $scope.loadPrevPage = function() {
+      $scope.currentPage--;
+    }
+
 })
 
 .controller('SurveyEntranceCtrl', function($scope) {
