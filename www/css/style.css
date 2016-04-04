@@ -4,3 +4,7 @@ iframe{
     width: 100%;
     height:250px;
 }
+
+.clickedAnswer{
+	background-color: #64B5F6 !important;
+}

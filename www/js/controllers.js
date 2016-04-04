@@ -1,9 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $sce) {
+.controller('AppCtrl', function($scope, $sce, $localstorage) {
     $scope.renderHtml = function(html_code)
     {
       return $sce.trustAsHtml(html_code);
+    };
+
+    $scope.idsReset = function(){
+      $localstorage.setObject("idler", {});
     };
 })
 
@@ -13,6 +17,8 @@ angular.module('starter.controllers', [])
 	$scope.$root.pass_code = "";
 
 	$scope.getSurvey = function(){
+
+    $scope.idsReset();
 
 
 		var data = Survey.getData($scope.$root.pass_code, function(data){
@@ -45,16 +51,51 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('SurveyCtrl', function($scope) {
+.controller('SurveyCtrl', function($scope, $localstorage) {
 
-    $scope.isclicked=false;
-    $scope.change_color= function(){
 
-      return "button-positive"
-    }
+    $scope.ids_synchro = function() {
+      $scope.idler = $localstorage.getObject('idler') || {};
+      $scope.idler_array = [];
+      angular.forEach($scope.idler, function(value, key) {
+        this.push(parseInt(key));
+      }, $scope.idler_array);
+    };
+
+    $scope.ids_synchro();
+
+
+    $scope.ids_import_export = function(id){
+      if ($scope.idler[id] !== true) {
+        $scope.idler[id] = true;
+        $localstorage.setObject("idler", $scope.idler);
+      }
+      else {
+        delete $scope.idler[id];
+        $localstorage.setObject("idler", $scope.idler);
+      }
+      $scope.idler_array = [];
+      angular.forEach($scope.idler, function(value, key) {
+        this.push(parseInt(key));
+      }, $scope.idler_array);
+    };
+
+
+  $scope.cardClass = function(id){
+      if ($scope.idler[id] === true) {
+        return "clickedAnswer"
+      }
+      else {
+        return ""
+      }
+    };
+
+
 })
 
 .controller('SurveyEntranceCtrl', function($scope) {
+
+
 
 
 

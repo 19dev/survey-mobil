@@ -11,16 +11,17 @@
       <div ng-repeat="item in survey[1]">
         <p>{{item.question_header}}</p>
         <div ng-repeat="x in item.answers">
-         <div class="list card">
+         
+         <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
 
-            <div class="item item-avatar">
+            <div class="item item-avatar" ng-class="cardClass({{x.id}})">
               <p>Cevap</p>
             </div>
 
-            <div class="item item-body">
+            <div class="item item-body" ng-class="cardClass({{x.id}})">
               <img class="full-image" src="{{x.image.url}}">
 
-              <p>
+              <p ng-class="cardClass({{x.id}})">
                {{x.answer_description}}
               </p>
 
