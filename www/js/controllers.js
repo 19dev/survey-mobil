@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
         $scope.$root.result = data.state;
       });
       $scope.$root.pass_code = "";
-      
+      $scope.idler="";
       $state.go('app.main');
 
 
@@ -106,6 +106,7 @@ angular.module('starter.controllers', [])
     };
 
 
+    
 })
 
 .controller('SurveyEntranceCtrl', function($scope) {

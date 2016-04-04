@@ -1,5 +1,11 @@
 <ion-view view-title="Karşılama Ekranı">
   <ion-content>
+    <div class="card" ng-show="survey[2]">
+    <div class="item item-text-wrap" style="background:#EF5350; color:white;">
+    <center> Hoşgeldiniz, {{survey[2].person_first_name +" "+survey[2].person_last_name}}</center>
+     
+    </div>
+  </div> 
     <div class="list card">
 
   <div class="item item-avatar">
@@ -9,11 +15,12 @@
 
   <div class="item item-image">
 
-
+      
       <div ng-bind-html="renderHtml(survey[0].poll_description)"></div>
   </div>
   <li class="item item-icon-left balanced">
     <i class="icon ion-ios-calendar-outline"></i>
+
     Başlangıç Tarihi:  {{survey[0].poll_start_date}}
   </li>
   <li class="item item-icon-left assertive">
@@ -21,11 +28,12 @@
     Bitiş Tarihi: {{survey[0].poll_finish_date}}
   </li>
   <ion-item>
-      <center><button class="button button-full button-calm" ng-click="" ui-sref="app.survey">
+      <center><button class="button button-full button-assertive" ng-click="" ui-sref="app.survey">
       TESTE BAŞLA
     </button></center>
   </ion-item>
-
+      
 </div>
+
   </ion-content>
 </ion-view>
