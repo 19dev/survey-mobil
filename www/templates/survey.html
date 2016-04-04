@@ -1,40 +1,46 @@
 <ion-view view-title="Testin Uygulandığı Sayfa">
   <ion-content>
 
-  <div ng-repeat="item in survey[1]" ng-show="$index == currentPage">
-    <p>{{item.question_header}}</p>
-    <div ng-repeat="x in item.answers">
+  <div class="grid" ng-repeat="item in survey[1]" ng-show="$index == currentPage">
+    <div class="item item-text-wrap" style="background:#EF5350; color:white;">
+      <center>{{item.question_header}}</center>
+    </div>
+    <div class="col-xs-12">
+    
+      <div class="col-xs-5" ng-repeat="x in item.answers">
 
-     <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
+        <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
 
-      <div class="item item-avatar" ng-class="cardClass({{x.id}})">
-        <p>Cevap</p>
+          <div class="item item-avatar" ng-class="cardClass({{x.id}})">
+            <p>Cevap</p>
+          </div>
+
+          <div class="item item-body" ng-class="cardClass({{x.id}})">
+            <img class="full-image" src="{{x.image.url}}">
+
+            <p ng-class="cardClass({{x.id}})">
+             {{x.answer_description}}
+           </p>
+         </div>
+
+       </div>
+
       </div>
 
-      <div class="item item-body" ng-class="cardClass({{x.id}})">
-        <img class="full-image" src="{{x.image.url}}">
-
-        <p ng-class="cardClass({{x.id}})">
-         {{x.answer_description}}
-       </p>
-
-     </div>
-
-   </div>
-
+      </div>
   </div>
 
-  </div>
-        <center>
-          <button id="prev_button" class="button button-assertive" ng-click="loadPrevPage()" ng-disabled="currentPage===0">
-            Geri
-          </button>
-          {{question_size}}
-          <button id="next_button" class="button button-assertive" ng-click="loadNextPage()" ng-disabled="!(currentPage<question_size)">
-            İleri
-          </button>
+  <center class="grid">
+    <button id="prev_button" class="button button-assertive" ng-click="loadPrevPage()" ng-disabled="currentPage===0">
+      Geri
+    </button>
+    <button id="next_button" class="button button-assertive" ng-click="loadNextPage()" ng-disabled="!(currentPage<question_size)">
+      İleri
+    </button>
+  </center>
 
-        </center>
+  </br>
+
   <center>
     <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
   </center>
