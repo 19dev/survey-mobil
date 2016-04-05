@@ -6,13 +6,13 @@
 
     <div class="item item-text-wrap" style="background:#EF5350; color:white;">
 
-      <center>
+      <div class="container" style="text-align:center">
       {{item.question_header}}
-      </center>
+      </div>
     </div>
-    <div  class="item item-text-wrap" style="background:#7986CB; color:white;">
-      <center class="col-xs-10 col-xs-offset-1">
-      <div ng-bind-html="renderHtml(item.question_description)"></div>
+    <div class="item item-text-wrap">
+      <center>
+      <div class="container" ng-bind-html="renderHtml(item.question_description)"></div>
       </center>
     </div>
     <div class="grid">
