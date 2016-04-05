@@ -54,7 +54,23 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('SurveyCtrl', function($scope, $localstorage, Survey, $state) {
+.controller('SurveyCtrl', function($scope, $localstorage, Survey, $state, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+
+  $scope.data = {};
+  $scope.data.currSlide = $ionicSlideBoxDelegate.currentIndex();
+  console.log('Current Slide = ' + $scope.data.currSlide);
+
+  $scope.slideChanged = function() {
+    
+    $ionicScrollDelegate.scrollTop();
+    $scope.data.currSlide = $ionicSlideBoxDelegate.currentIndex();
+    console.log('the slide changed to : ' + $scope.data.currSlide);
+    
+    $timeout( function() {
+      $ionicScrollDelegate.resize();
+    }, 50);
+    
+  }
 
     $scope.postSurvey = function(){
 

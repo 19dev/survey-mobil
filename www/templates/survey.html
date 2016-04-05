@@ -1,57 +1,54 @@
-<ion-view view-title="Testin Uygulandığı Sayfa">
+<ion-view view-title="{{survey[0].poll_name}}">
   <ion-content>
+  <ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
+    <ion-slide  ng-repeat="item in survey[1]" >
+  
 
-  <div class="grid" ng-repeat="item in survey[1]" ng-show="$index == currentPage">
     <div class="item item-text-wrap" style="background:#EF5350; color:white;">
+
       <center>
       {{item.question_header}}
       </center>
     </div>
-    <div class="col-xs-12" class="item item-text-wrap" style="background:#7986CB; color:white;">
+    <div  class="item item-text-wrap" style="background:#7986CB; color:white;">
       <center class="col-xs-10 col-xs-offset-1">
       <div ng-bind-html="renderHtml(item.question_description)"></div>
       </center>
     </div>
-    <div class="col-xs-12">
-      <div class="col-md-6" ng-repeat="x in item.answers">
+    <div class="grid">
+        <div  class="col-md-6" ng-repeat="x in item.answers">
 
+        
+          <div class="list card " ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
 
-        <div class="list card" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
+            <div class="item item-avatar" ng-class="cardClass({{x.id}})">
+              <p>Cevap</p>
+            </div>
 
-          <div class="item item-avatar" ng-class="cardClass({{x.id}})">
-            <p>Cevap</p>
-          </div>
+            <div class="item item-body" ng-class="cardClass({{x.id}})">
+              <img class="full-image" src="{{x.image.url}}">
 
-          <div class="item item-body" ng-class="cardClass({{x.id}})">
-            <img class="full-image" src="{{x.image.url}}">
+              <p ng-class="cardClass({{x.id}})">
+               {{x.answer_description}}
+             </p>
+           </div>
 
-            <p ng-class="cardClass({{x.id}})">
-             {{x.answer_description}}
-           </p>
          </div>
-
-       </div>
-
-      </div>
-      
+       
+       
+     
 
       </div>
-  </div>
-
-  <center class="grid">
-    <button id="prev_button" class="button button-assertive" ng-click="loadPrevPage()" ng-disabled="currentPage===0">
-      Geri
-    </button>
-    <button id="next_button" class="button button-assertive" ng-click="loadNextPage()" ng-disabled="!(currentPage<question_size)">
-      İleri
-    </button>
-  </center>
-
-  </br>
-
-  <center>
+  </div>    
+   <center class="col-md-12">
     <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
   </center>
+   </ion-slide>
+
+ </ion-slide-box>
+
+
+
 
 
   </ion-content>
