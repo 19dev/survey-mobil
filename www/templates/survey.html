@@ -1,55 +1,33 @@
-<ion-view view-title="{{survey[0].poll_name}}">
+<ion-view view-title="Test : {{survey[0].poll_name}}">
   <ion-content>
-  <ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
-    <ion-slide  ng-repeat="item in survey[1]" >
-  
-
-    <div class="item item-text-wrap" style="background:#EF5350; color:white;">
-
-      <div class="container" style="text-align:center">
-      {{item.question_header}}
+    <ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
+      <ion-slide ng-repeat="item in survey[1]" >
+      <div class="item item-text-wrap questionHeaderContainer">
+        <div class="container">
+          {{$index + 1}}) {{item.question_header}}
+        </div>
       </div>
-    </div>
-    <div class="item item-text-wrap">
-      <center>
-      <div class="container" ng-bind-html="renderHtml(item.question_description)"></div>
-      </center>
-    </div>
-    <div class="grid">
-        <div  class="col-md-6" ng-repeat="x in item.answers">
-
-        
-          <div class="list card " ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
-
-            <div class="item item-avatar" ng-class="cardClass({{x.id}})">
-              <p>Cevap</p>
-            </div>
-
+      <div class="item item-text-wrap">
+        <center>
+          <div class="container" ng-bind-html="renderHtml(item.question_description)"></div>
+        </center>
+      </div>
+      <div class="grid">
+        <div class="col-md-6" ng-repeat="x in item.answers">        
+          <div class="list card answerCard" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
             <div class="item item-body" ng-class="cardClass({{x.id}})">
-              <img class="full-image" src="{{x.image.url}}">
-
-              <p ng-class="cardClass({{x.id}})">
-               {{x.answer_description}}
-             </p>
-           </div>
-
-         </div>
-       
-       
-     
-
-      </div>
-  </div>    
-   <center class="col-md-12">
-    <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
-  </center>
-   </ion-slide>
-
- </ion-slide-box>
-
-
-
-
-
+              <center>
+                <img class="answerImage" src="{{x.image.url}}">
+              </center>  
+              <p class="answerDescription" ng-class="cardClass({{x.id}})">{{x.answer_description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>    
+      <center class="col-md-12">
+        <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
+      </center>
+      </ion-slide>
+    </ion-slide-box>
   </ion-content>
 </ion-view>

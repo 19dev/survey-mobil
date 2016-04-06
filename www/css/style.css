@@ -2,9 +2,33 @@
 iframe{
 
     width: 100%;
-    height:250px;
+    height: 250px;
 }
 
 .clickedAnswer{
 	background-color: #64B5F6 !important;
+}
+
+.questionHeaderContainer{
+	background: #EF5350; 
+	color: white;
+	text-align: center;
+}
+
+.answerCard{
+	max-height: 550px; 
+	min-height: 550px;
+}
+
+.answerImage{
+	max-height: 450px;
+}
+
+.answerDescription{
+	color: black; 
+	text-align: center;
+}
+
+.verticalDesc{
+	font-size: 30pt;
 }
