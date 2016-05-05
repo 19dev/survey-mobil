@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $sce, $localstorage, $ionicPlatform) {
+.controller('AppCtrl', function($scope, $sce, $localstorage, $ionicPlatform, $state) {
 
   $ionicPlatform.registerBackButtonAction(function (event) {
     if($state.is('app.main')){
