@@ -13,17 +13,17 @@
         </center>
       </div>
       <div class="grid">
-        <div class="col-md-6" ng-repeat="x in item.answers">        
-          <div class="list card answerCard" ng-click="ids_import_export({{x.id}})" ng-class="cardClass({{x.id}})">
-            <div class="item item-body" ng-class="cardClass({{x.id}})">
+        <div class="col-md-6" ng-repeat="x in item.answers">
+          <div class="list card answerCard asd" ng-click="ids_import_export({{x.id}})" ng-class="cardClass(x.id)">
+            <div class="item item-body" ng-class="cardClass(x.id)">
               <center>
                 <img class="answerImage" src="{{x.image.url}}">
-              </center>  
-              <p class="answerDescription" ng-class="cardClass({{x.id}})">{{x.answer_description}}</p>
+              </center>
+              <p class="answerDescription" ng-class="onlyTextAnswerControl(x.image.url)">{{x.answer_description}}</p>
             </div>
           </div>
         </div>
-      </div>    
+      </div>
       <center class="col-md-12">
         <a class="button icon-right ion-chevron-right button-assertive" ng-click="postSurvey()">Kaydet ve Bitir</a>
       </center>

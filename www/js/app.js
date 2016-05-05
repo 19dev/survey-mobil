@@ -16,8 +16,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
 })
 
 .factory("Survey", function($http) {
-    var surveyUrl = "http://localhost:3000/surveyMobile?passcod=";
-    var recordUrl = "http://localhost:3000/recordMobile";
+    var surveyUrl = "https://anketsistemi.herokuapp.com/surveyMobile?passcod=";
+    var recordUrl = "https://anketsistemi.herokuapp.com/recordMobile";
 
     return {
       getData: function(code, success, error) {
@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngResource'])
               });
         }
     }
-          
+
 
 })
 

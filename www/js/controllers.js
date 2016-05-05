@@ -58,13 +58,11 @@ angular.module('starter.controllers', [])
 
   $scope.data = {};
   $scope.data.currSlide = $ionicSlideBoxDelegate.currentIndex();
-  console.log('Current Slide = ' + $scope.data.currSlide);
 
   $scope.slideChanged = function() {
 
     $ionicScrollDelegate.scrollTop();
     $scope.data.currSlide = $ionicSlideBoxDelegate.currentIndex();
-    console.log('the slide changed to : ' + $scope.data.currSlide);
     
     $timeout( function() {
       $ionicScrollDelegate.resize();
@@ -113,29 +111,27 @@ angular.module('starter.controllers', [])
 
 
   $scope.cardClass = function(id){
-    if ($scope.idler[id] === true) {
+    if ($scope.idler[id] === true) 
+    {
       return "clickedAnswer"
     }
-    else {
+    else 
+    {
       return ""
     }
   };
 
-  $scope.currentPage = 0;
+  $scope.onlyTextAnswerControl = function(imageInfo){
+    if (imageInfo === null) {
+      return "onlyTextAnswer"
+    }
+  }
 
-  $scope.question_size = $scope.$root.survey[1].length-1;
-  $scope.loadNextPage = function() {
-    $scope.currentPage++;
-  }
-  $scope.loadPrevPage = function() {
-    $scope.currentPage--;
-  }
+
 
 })
 
 .controller('SurveyEntranceCtrl', function($scope) {
-
-
 
 
 
