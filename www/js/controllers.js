@@ -1,6 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $sce, $localstorage) {
+.controller('AppCtrl', function($scope, $sce, $localstorage, $ionicPlatform) {
+
+  $ionicPlatform.registerBackButtonAction(function (event) {
+    if($state.is('app.main')){
+      ionic.Platform.exitApp();
+    }
+
+  }, 100);
+
+
   $scope.renderHtml = function(html_code)
   {
     return $sce.trustAsHtml(html_code);
@@ -21,7 +30,7 @@ angular.module('starter.controllers', [])
     $scope.idsReset();
 
 
-    $localstorage.set("pass_code", $scope.$root.pass_code); 
+    $localstorage.set("pass_code", $scope.$root.pass_code);
 
 
     var data = Survey.getData($scope.$root.pass_code, function(data){
@@ -63,11 +72,11 @@ angular.module('starter.controllers', [])
 
     $ionicScrollDelegate.scrollTop();
     $scope.data.currSlide = $ionicSlideBoxDelegate.currentIndex();
-    
+
     $timeout( function() {
       $ionicScrollDelegate.resize();
     }, 50);
-    
+
   }
 
   $scope.postSurvey = function(){
@@ -111,11 +120,11 @@ angular.module('starter.controllers', [])
 
 
   $scope.cardClass = function(id){
-    if ($scope.idler[id] === true) 
+    if ($scope.idler[id] === true)
     {
       return "clickedAnswer"
     }
-    else 
+    else
     {
       return ""
     }
